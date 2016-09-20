@@ -1,0 +1,43 @@
+CREATE TABLE IF NOT EXISTS `man_randomevent` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `message` text,
+  `effect` enum('money','blocked','verletzung','moral','frische','staerke','fans') NOT NULL,
+  `effect_money_amount` int(10) NOT NULL DEFAULT '0',
+  `effect_blocked_matches` int(10) NOT NULL DEFAULT '0',
+  `effect_skillchange` tinyint(3) NOT NULL DEFAULT '0',
+  `weight` tinyint(3) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+
+
+INSERT INTO `man_randomevent` (`id`, `title`, `message`, `effect`, `effect_money_amount`, `effect_blocked_matches`, `effect_skillchange`, `weight`) VALUES
+(1, '', 'Ihr Spieler {playername} ist imn Training umgeknickt. Er muss leider ein paar Tage pausieren.', 'verletzung', 0, 2, 0, 1),
+(2, '', 'Ihr Spieler {playername} hat eine neue Freundin. Diese beanspruch ihn doch sehr. Er verliert dadurch etwas an Frische..', 'frische', 0, 0, -3, 1),
+(3, '', 'Ihr Spieler {playername} hat in letzter Zeit gut trainiert. Seine Konditionswerte steigen.', 'frische', 0, 0, 3, 1),
+(4, '', 'Ihr Team hat mit Ihrem Sponsor ein Album augezeichnet. Ein riesen Erfolg! Das Album ist in den Top 10 Charts.', 'money', 1000000, 0, 0, 1),
+(5, '', 'Ihr Team hat mit Heino ein Album aufgenommen. Ein Ã¼berraschender Flop!', 'money', -250000, 0, 0, 1),
+(6, '', 'Sie haben den neuen OB der Stadt zum Ehrenmitglied gemacht. Dieser sichert Ihnen ZuschÃ¼sse zur Jugenkasse zu.', 'money', 500000, 0, 0, 1),
+(7, '', 'Sie haben mehrer GesprÃ¤che mit {playername} gefÃ¼hrt. Dies hat ihn sehr motiviert. Er fÃ¼hlt sich ernst genommen.', 'moral', 0, 0, 5, 2),
+(8, '', 'Eine neue Trainingsmethode wirkt sich positive auf die Kondition von {playername} aus.', 'frische', 0, 0, 5, 2),
+(9, '', 'Es war nur eine Frage der Zeit...{playername} musste im Training die Segel streichen. Die QuÃ¤lix Mehoden scheinen zuviel gewesen zu sein.', 'frische', 0, 0, -3, 2),
+(10, '', 'Der neue Mezen (Vito Corleone) mÃ¶chte sich grosszÃ¼gig zeigen und spendet Ihrem Verein eine Menge Schwarzgeld. Jetzt will er aber auch Ergebnisse sehen.', 'money', 5000000, 0, 0, 1),
+(11, '', 'Im letzten Spiel wurden erneut Begalos abgefeuert. Der Verband bittet zur Kasse.', 'money', -150000, 0, 0, 3),
+(12, '', 'Krawalle erschÃ¼tterten das letzte Spiel. Pickelige Hooligans habe einen ernormen Schaden angerichtet, welcher vom Verein zu tragen ist.', 'money', -500000, 0, 0, 1),
+(13, '', 'Ihr Spieler {playername} wurde beim koksen in einem Nachtklub gesichtet und wurde von Ihrem Mannschaftsarzt vorsichtshalber krankgeschrieben..', 'verletzung', 0, 10, 0, 1),
+(14, '', 'Ihr Spieler {playername} ist zum ersten Mal Vater geworden und hat dadurch in letzter Zeit wenig geschlafen.', 'frische', 0, 0, -2, 1),
+(15, '', '{playername} macht immer mehr Fortschritte im Training und hat sich somit um {value} Staerkepunkte verbessert.', 'staerke', 0, 0, 3, 2),
+(16, '', '{playername} macht immer mehr Fortschritte im Training und hat sich somit um {value} Frischepunkte verbessert.', 'frische', 0, 0, 3, 2),
+(17, '', '{playername} macht immer mehr Fortschritte im Training und hat sich somit seine Moral um {value} Punkte verbessert.', 'frische', 0, 0, 3, 2),
+(18, '', 'Die essbaren Slips kamen bei den weiblichen Fans nicht gut an und die EhemÃ¤nner haben Fanshop Verbot. Die Slips mussten aus den Regalen genommen werden.', 'money', -300000, 0, 0, 1),
+(19, '', '{playername} hat ich im Training einen Kreuzbandriss zugezogen. Er fÃ¤llt sehr lange aus.', 'verletzung', 0, 15, 0, 1),
+(20, '', 'Muskelfaserriss bei {playername}.', 'verletzung', 0, 5, 0, 1),
+(21, '', '{playername} hat ein Gerstenkorn und fÃ¤llt somit aus.', 'verletzung', 0, 1, 0, 1),
+(22, '', '{playername} hat sich beim SM-Spiel etwas eingeklemmt und kann z.Zt. nicht laufen.', 'verletzung', 0, 1, 0, 1),
+(23, '', 'Der Verband lobt Ihr Engagement fÃ¼r benachteilige Kinder und Ã¼berreicht Ihnen ein kleine Spende', 'money', 500000, 0, 0, 1),
+(24, '', '{playername} hat mit Radfahren ein neues Hobby. Das wirkt sich positiv auf seine Kondition aus.', 'frische', 0, 0, 2, 1),
+(25, '', '{playername} hat mit ZUMBA ein neues Hobby. Das wirkt sich positiv auf seine Kondition aus.', 'frische', 0, 0, 2, 1),
+(26, '', '{playername} hat mit Pokern ein neues Hobby. Er ist z.Zt. nicht besonders konzentriert bei der Sache.', 'frische', 0, 0, -1, 1),
+(27, '', 'Bordellbesuche kÃ¶nnen entspannend sein. Nicht so bei {playername}. Er kommt vÃ¶llig Ã¼bermÃ¼det inst Training.', 'frische', 0, 0, -2, 1),
+(28, '', 'Ihr Spieler {playername} ist wieder Single. Jetzt hat er eine SehnenscheidenentzÃ¼ndung.', 'frische', 0, -1, 0, 1),
+(29, '', 'Du hast im letzten AuswÃ¤rtsspiel den mitgereisten Fans eine Runde Freibier spendiert. Damit steigt deine Fanbeliebtheit', 'fans', 0, 0, 3, 1);
